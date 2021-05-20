@@ -2,13 +2,14 @@ from app.utils.core.business_object import BusinessObject
 
 
 class ProfileObject(BusinessObject):
-    def __init__(self, interests: str, type_: str, online: bool,
-                 frequency: int, expertise: str, extroversion: str,
+    def __init__(self, owner: int, interests: str, type_: str, online: bool,
+                 frequence: int, expertise: str, extroversion: str,
                  id_: int = 0):
+        self.owner = owner
         self.interests = interests
         self.type_ = type_
         self.online = online
-        self.frequency = frequency
+        self.frequence = frequence
         self.expertise = expertise
         self.extroversion = extroversion
         super().__init__(id_=id_)
