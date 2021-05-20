@@ -1,24 +1,15 @@
 import mysql.connector as connector
 
 
-user = """
-    CREATE TABLE IF NOT EXISTS user (
-        id SERIAL PRIMARY KEY,
-        email VARCHAR(60) UNIQUE,
-        first_name VARCHAR(60),
-        last_name VARCHAR(60)
-    )
-"""
-
 profile = """
     CREATE TABLE IF NOT EXISTS profile (
         id SERIAL PRIMARY KEY,
-        user UNIQUE INTEGER,
+        owner INT,
         semester INTEGER,
         interests VARCHAR(240),
         type_ VARCHAR(30),
         online BOOL,
-        frequency INTEGER,
+        frequence INTEGER,
         expertise VARCHAR(30),
         extroversion VARCHAR(30)
     )
@@ -28,13 +19,12 @@ profile = """
 if __name__ == "__main__":
     connection_arguments = {
         "user": "root",
-        "password": "mariadbpw",
+        "password": "Endgegner",
         "host": "localhost",
-        "database": "dummydb",
-        "port": "33061"
+        "database": "mydb",
+        "port": "3306"
     }
     cnx = connector.connect(**connection_arguments)
     cnx.autocommit = True
     cursor = cnx.cursor()
-    cursor.execute(drop_person)
-    cursor.execute(person)
+    cursor.execute(profile)
